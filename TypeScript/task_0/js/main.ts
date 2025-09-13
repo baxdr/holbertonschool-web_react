@@ -21,24 +21,13 @@ const student2: Student = {
 
 const studentsList: Student[] = [student1, student2];
 
-const body = document.getElementsByTagName("body")[0];
-const table = document.createElement("table");
-const tbody = document.createElement("tbody");
+const table = document.createElement('table');
+document.body.appendChild(table);
 
-studentsList.forEach((student) => {
-  const row = document.createElement("tr");
-
-  const firstNameCell = document.createElement("td");
-  firstNameCell.textContent = student.firstName;
-
-  const locationCell = document.createElement("td");
-  locationCell.textContent = student.location;
-
-  row.appendChild(firstNameCell);
-  row.appendChild(locationCell);
-
-  tbody.appendChild(row);
+studentsList.forEach(student => {
+  const row = table.insertRow();
+  const cell1 = row.insertCell();
+  const cell2 = row.insertCell();
+  cell1.innerHTML = student.firstName;
+  cell2.innerHTML = student.location;
 });
-
-table.appendChild(tbody);
-body.appendChild(table);
